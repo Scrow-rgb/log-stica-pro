@@ -62,21 +62,21 @@ export default function RouteMapIllustration() {
         filter="url(#route-glow)"
       />
 
-      {/* Stops */}
+      {/* Stops — bairros de São Paulo */}
       {[
-        { cx: 72, cy: 248, label: '1' },
-        { cx: 180, cy: 176, label: '2' },
-        { cx: 280, cy: 182, label: '3' },
-        { cx: 390, cy: 90, label: '4' },
+        { cx: 72, cy: 248, label: 'CD' },
+        { cx: 180, cy: 176, label: 'Consolação' },
+        { cx: 280, cy: 182, label: 'Paulista' },
+        { cx: 390, cy: 90, label: 'Jardins' },
       ].map((stop) => (
         <g key={stop.label}>
           <circle cx={stop.cx} cy={stop.cy} r="18" fill="#ffffff" stroke="#2563eb" strokeWidth="3" />
           <text
             x={stop.cx}
-            y={stop.cy + 5}
+            y={stop.cy + (stop.label.length > 3 ? 4 : 5)}
             textAnchor="middle"
             fill="#1d4ed8"
-            fontSize="13"
+            fontSize={stop.label.length > 3 ? '8' : '11'}
             fontWeight="700"
             fontFamily="system-ui, sans-serif"
           >
@@ -97,7 +97,7 @@ export default function RouteMapIllustration() {
         <rect width="132" height="56" rx="14" fill="#ffffff" opacity="0.95" />
         <rect x="1" y="1" width="130" height="54" rx="13" stroke="#dbeafe" strokeWidth="1" fill="none" />
         <text x="16" y="24" fill="#64748b" fontSize="10" fontWeight="600" fontFamily="system-ui, sans-serif">
-          Rota otimizada
+          São Paulo, SP
         </text>
         <text x="16" y="44" fill="#059669" fontSize="16" fontWeight="800" fontFamily="system-ui, sans-serif">
           -30% km

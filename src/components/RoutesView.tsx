@@ -29,18 +29,18 @@ interface RoutesViewProps {
 }
 
 export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
-  const [driver, setDriver] = useState<string>('João Silva (Moto 1)');
+  const [driver, setDriver] = useState<string>('João Silva (Moto SP-042)');
   const [optimizing, setOptimizing] = useState<boolean>(false);
   const [isOptimized, setIsOptimized] = useState<boolean>(false);
   const [mapMode, setMapMode] = useState<'otimizado' | 'transito'>('otimizado');
   
   // Custom Stops List styled exactly like Screen 4
   const [stops, setStops] = useState<RouteStop[]>([
-    { id: 'start', type: 'origin', name: 'CD LogiFlow - Vila Leopoldina', address: 'Av. Dr. Gastão Vidigal, 1946', coordinates: { x: 30, y: 35 } },
-    { id: 's1', type: 'stop', name: 'Rua Augusta, 1200', address: 'Consolação, São Paulo - SP', coordinates: { x: 50, y: 55 } },
-    { id: 's2', type: 'stop', name: 'Av. Paulista, 1578', address: 'MASP - Bela Vista, SP', coordinates: { x: 65, y: 45 } },
-    { id: 's3', type: 'stop', name: 'Rua Oscar Freire, 800', address: 'Jardins, São Paulo - SP', coordinates: { x: 80, y: 65 } },
-    { id: 'end', type: 'destination', name: 'Rua da Consolação, 2400', address: 'Higienópolis, São Paulo - SP', coordinates: { x: 55, y: 25 } }
+    { id: 'start', type: 'origin', name: 'CD TransMendes — Vila Leopoldina', address: 'Av. Dr. Gastão Vidigal, 1946, São Paulo - SP', coordinates: { x: 30, y: 35 } },
+    { id: 's1', type: 'stop', name: 'Drogaria Saúde Total — Consolação', address: 'Rua da Consolação, 2302, Consolação, São Paulo - SP', coordinates: { x: 50, y: 55 } },
+    { id: 's2', type: 'stop', name: 'Papelaria Central do Estudante', address: 'Av. Paulista, 1578, Bela Vista, São Paulo - SP', coordinates: { x: 65, y: 45 } },
+    { id: 's3', type: 'stop', name: 'Mercado Bom Preço — Jardins', address: 'Rua Oscar Freire, 800, Jardins, São Paulo - SP', coordinates: { x: 80, y: 65 } },
+    { id: 'end', type: 'destination', name: 'Retorno ao CD — Vila Leopoldina', address: 'Av. Dr. Gastão Vidigal, 1946, São Paulo - SP', coordinates: { x: 55, y: 25 } }
   ]);
 
   const [newStopName, setNewStopName] = useState<string>('');
@@ -132,7 +132,7 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
       </div>
 
       {/* Primary Metrics Row - Screen 4 Header style */}
-      <div className="bg-white border border-gray-200 rounded-2xl p-5 mb-6 flex flex-wrap justify-between items-center gap-6 shadow-sm">
+      <div className="bg-white border border-gray-200 rounded-2xl p-5 mb-6 flex flex-wrap justify-between items-center gap-6 shadow-sm ui-border-hover ui-card-lift-subtle">
         <div className="flex items-center gap-8 flex-wrap">
           <div>
             <span className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Distância Total</span>
@@ -158,10 +158,10 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
               onChange={(e) => setDriver(e.target.value)}
               className="py-1 px-3 bg-gray-50 border border-gray-200 rounded-lg text-xs font-bold text-gray-700 focus:ring-1 focus:ring-blue-600 focus:bg-white"
             >
-              <option value="João Silva (Moto 1)">João Silva (Moto 1)</option>
-              <option value="Pedro Souza (Moto 3)">Pedro Souza (Moto 3)</option>
-              <option value="Marcos Lima (Van 2)">Marcos Lima (Van 2)</option>
-              <option value="Silvia Santos (Moto 4)">Silvia Santos (Moto 4)</option>
+              <option value="João Silva (Moto SP-042)">João Silva (Moto SP-042)</option>
+              <option value="Pedro Souza (Van SP-018)">Pedro Souza (Van SP-018)</option>
+              <option value="Marcos Lima (Fiorino SP-007)">Marcos Lima (Fiorino SP-007)</option>
+              <option value="Silvia Santos (Moto SP-031)">Silvia Santos (Moto SP-031)</option>
             </select>
           </div>
         </div>
@@ -172,10 +172,10 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
             id="btn_optimize_action"
             disabled={optimizing}
             onClick={handleOptimizeRoute}
-            className={`px-5 py-3 rounded-xl font-bold text-xs text-white flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all border-none ${
+            className={`px-5 py-3 rounded-xl font-bold text-xs text-white flex items-center justify-center gap-2 shadow-md ui-btn border-none ${
               optimizing 
                 ? 'bg-blue-500 cursor-not-allowed' 
-                : 'bg-blue-600 hover:bg-blue-700 shadow-blue-100 hover:shadow-lg'
+                : 'bg-blue-600 hover:bg-blue-700 shadow-blue-100 hover:shadow-lg hover:-translate-y-0.5'
             }`}
           >
             {optimizing ? (
@@ -196,7 +196,7 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         {/* Paradas Stops Planner List column (Spans 5 coordinates width) */}
-        <div className="lg:col-span-5 bg-white border border-gray-200 rounded-3xl p-6 shadow-sm space-y-6">
+        <div className="lg:col-span-5 bg-white border border-gray-200 rounded-3xl p-6 shadow-sm space-y-6 ui-border-hover">
           <div className="flex justify-between items-center border-b border-gray-100 pb-4">
             <div>
               <h3 className="text-sm font-bold text-gray-900">Paradas ({stops.length})</h3>
@@ -206,7 +206,7 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
             <button 
               type="button"
               onClick={() => setShowAddForm(!showAddForm)}
-              className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs font-bold rounded-xl flex items-center gap-1 transition-all"
+              className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs font-bold rounded-xl flex items-center gap-1 ui-btn hover:border-blue-200/60 border border-transparent"
             >
               <Plus className="h-3.5 w-3.5" /> Adicionar
             </button>
@@ -226,7 +226,7 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
                 <div className="space-y-2">
                   <input 
                     type="text" 
-                    placeholder="Nome d'esta parada (Ex: Farmácia Popular)"
+                    placeholder="Nome da parada (Ex: Drogaria Saúde Total — Pinheiros)"
                     value={newStopName}
                     onChange={(e) => setNewStopName(e.target.value)}
                     className="w-full px-3 py-2 bg-white border border-gray-200 text-xs rounded-lg placeholder-gray-400 text-gray-950 focus:ring-1 focus:ring-blue-600 font-semibold"
@@ -234,7 +234,7 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
                   />
                   <input 
                     type="text" 
-                    placeholder="Endereço (Ex: Pça Charles Miller, Pacaembu)"
+                    placeholder="Endereço (Ex: Rua Teodoro Sampaio, 1443, Pinheiros, São Paulo - SP)"
                     value={newStopAddress}
                     onChange={(e) => setNewStopAddress(e.target.value)}
                     className="w-full px-3 py-2 bg-white border border-gray-200 text-xs rounded-lg placeholder-gray-400 text-gray-950 focus:ring-1 focus:ring-blue-600 font-semibold"
@@ -251,7 +251,7 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
                   </button>
                   <button 
                     type="submit"
-                    className="px-4 py-1.5 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors"
+                    className="px-4 py-1.5 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 ui-btn"
                   >
                     Salvar
                   </button>
@@ -282,12 +282,12 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
               return (
                 <div 
                   key={stop.id}
-                  className={`p-3.5 border rounded-2xl flex items-start gap-4 transition-all relative group ${
+                  className={`p-3.5 border rounded-2xl flex items-start gap-4 ui-card relative group ${
                     isStart 
-                      ? 'bg-blue-50/20 border-blue-200/60' 
+                      ? 'bg-blue-50/20 border-blue-200/60 hover:border-blue-300/80' 
                       : isEnd 
-                      ? 'bg-red-50/10 border-red-100'
-                      : 'bg-white border-gray-200 hover:border-gray-300'
+                      ? 'bg-red-50/10 border-red-100 hover:border-red-200/80'
+                      : 'bg-white border-gray-200 hover:border-gray-300/80 ui-card-lift-subtle'
                   }`}
                 >
                   {/* Leading stop identifier */}
@@ -309,7 +309,7 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
                     <button 
                       type="button"
                       onClick={() => handleRemoveStop(stop.id)}
-                      className="absolute right-3.5 top-3.5 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 transition-opacity"
+                      className="absolute right-3.5 top-3.5 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 ui-btn"
                       title="Excluir Parada"
                     >
                       <Trash2 className="h-4 w-4" />
@@ -327,7 +327,7 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
                 <Sparkles className="h-4 w-4 text-emerald-600 animate-bounce" />
                 <span>Roteiro Rígido Otimizado com sucesso!</span>
               </div>
-              <p className="leading-tight text-emerald-600 font-semibold">Os endereços foram priorizados por rota de menor atrito geográfico e tráfego São Paulo. Isso economizará aprox. 11 minutos e R$ 4,10 em consumo direto.</p>
+              <p className="leading-tight text-emerald-600 font-semibold">Paradas reordenadas por menor atrito geográfico e tráfego da Marginal Pinheiros. Economia estimada: 11 minutos e R$ 4,10 em combustível por rota.</p>
             </div>
           )}
         </div>
@@ -340,10 +340,10 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
             <button 
               type="button"
               onClick={() => setMapMode('otimizado')}
-              className={`px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider ui-btn ${
                 mapMode === 'otimizado' 
                   ? 'bg-blue-600 text-white' 
-                  : 'text-gray-400 hover:text-white'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
               OTIMIZADA
@@ -351,10 +351,10 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
             <button 
               type="button"
               onClick={() => setMapMode('transito')}
-              className={`px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider ui-btn ${
                 mapMode === 'transito' 
                   ? 'bg-amber-600 text-white' 
-                  : 'text-gray-400 hover:text-white'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
               TRÂNSITO AO VIVO
@@ -450,8 +450,8 @@ export default function RoutesView({ companyName, addToast }: RoutesViewProps) {
 
             {/* Zoom coordinates UI overlay */}
             <div className="absolute bottom-4 right-4 flex flex-col gap-1 z-20">
-              <button type="button" className="w-8 h-8 rounded bg-[#1c293a] text-white border border-gray-700 shadow flex items-center justify-center hover:bg-gray-800 font-bold">+</button>
-              <button type="button" className="w-8 h-8 rounded bg-[#1c293a] text-white border border-gray-700 shadow flex items-center justify-center hover:bg-gray-800 font-bold">-</button>
+              <button type="button" className="w-8 h-8 rounded bg-[#1c293a] text-white border border-gray-700 shadow flex items-center justify-center hover:bg-gray-800 font-bold ui-btn hover:border-gray-600/80">+</button>
+              <button type="button" className="w-8 h-8 rounded bg-[#1c293a] text-white border border-gray-700 shadow flex items-center justify-center hover:bg-gray-800 font-bold ui-btn hover:border-gray-600/80">-</button>
             </div>
             
             {/* Dynamic Grid Scale Overlay bottom-left */}

@@ -29,7 +29,8 @@ import {
   LogOut,
   Sliders,
   Maximize2,
-  Bell
+  Bell,
+  Menu
 } from 'lucide-react';
 
 import { DeliveryItem, OnboardingState } from './types';
@@ -50,23 +51,26 @@ export default function App() {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
   const [showSupportModal, setShowSupportModal] = useState<boolean>(false);
   const [supportMessage, setSupportMessage] = useState<string>('');
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   // Global Config variables updated during onboarding
   const [companyConfig, setCompanyConfig] = useState<OnboardingState>({
     currentStep: 'Empresa',
-    companyName: 'Distribuidora Alves',
-    segment: 'Alimentício',
-    fleetSize: 12,
+    companyName: 'TransMendes Logística',
+    segment: 'E-commerce Geral',
+    fleetSize: 18,
     integrationSelected: 'VTEX',
     firstRouteAdded: true
   });
 
   // Global deliveries database
   const [deliveries, setDeliveries] = useState<DeliveryItem[]>([
-    { id: '#LP-49210', client: 'Moda Feminina BH', address: 'Av. Paulista, 1000', cep: '01310-100', status: 'Em rota', updatedAt: 'Há 4 mins', coordinates: { x: 65, y: 48 } },
-    { id: '#LP-49208', client: 'Eletro Tech Curitiba', address: 'Rua XV de Novembro, 45', cep: '80020-310', status: 'Entregue', updatedAt: 'Há 12 mins', coordinates: { x: 45, y: 55 } },
-    { id: '#LP-49207', client: 'Distribuidora Alvorada', address: 'Rua Augusta, 1200', cep: '01305-100', status: 'Falhou', updatedAt: 'Há 1 hora', coordinates: { x: 50, y: 56 } },
-    { id: '#LP-49205', client: 'Pet Shop Amigo', address: 'Rua Tabapuã, 800', cep: '04533-014', status: 'Em rota', updatedAt: 'Há 2 horas', coordinates: { x: 32, y: 68 } }
+    { id: '#LP-88421', client: 'Comercial Mendes Atacado', address: 'Rua Vergueiro, 2253, Vila Mariana', cep: '04101-300', status: 'Em rota', updatedAt: 'Há 4 mins', coordinates: { x: 65, y: 48 } },
+    { id: '#LP-88408', client: 'Loja Beleza & Estilo SP', address: 'Av. Brigadeiro Luís Antônio, 2344, Jardim Paulista', cep: '01402-000', status: 'Entregue', updatedAt: 'Há 12 mins', coordinates: { x: 45, y: 55 } },
+    { id: '#LP-88407', client: 'Distribuidora São Paulo Bebidas', address: 'Rua Bela Cintra, 986, Consolação', cep: '01415-002', status: 'Falhou', updatedAt: 'Há 1 hora', coordinates: { x: 50, y: 56 } },
+    { id: '#LP-88405', client: 'Empório Grãos & Cia', address: 'Rua Tabapuã, 745, Itaim Bibi', cep: '04533-014', status: 'Em rota', updatedAt: 'Há 2 horas', coordinates: { x: 32, y: 68 } },
+    { id: '#LP-88403', client: 'Farmácias Ultramed', address: 'Av. Rebouças, 3970, Pinheiros', cep: '05402-600', status: 'Atrasado', updatedAt: 'Há 35 mins', coordinates: { x: 38, y: 42 } },
+    { id: '#LP-88401', client: 'Atacado Nordeste Express', address: 'Rua Haddock Lobo, 595, Cerqueira César', cep: '01414-001', status: 'Entregue', updatedAt: 'Há 28 mins', coordinates: { x: 58, y: 38 } }
   ]);
 
   // Toast notifier
@@ -181,14 +185,25 @@ export default function App() {
           {['dashboard', 'routes', 'integrations'].includes(currentScreen) && (
             <motion.div 
               key="workspace"
-              className="w-full flex-1 h-full flex overflow-hidden"
+              className="w-full flex-1 h-full flex overflow-hidden relative"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Dynamic Left Sidebar Drawer (Screenshot 3 & 4 layout aesthetics) */}
-              <aside className="w-64 bg-[#0b1c30] text-gray-300 flex flex-col justify-between p-5 border-r border-[#1a2c42] shrink-0">
+              {/* Mobile sidebar overlay */}
+              <div
+                aria-hidden={!sidebarOpen}
+                onClick={() => setSidebarOpen(false)}
+                className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-all duration-300 lg:hidden ${
+                  sidebarOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                }`}
+              />
+
+              {/* Dynamic Left Sidebar Drawer */}
+              <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#0b1c30] text-gray-300 flex flex-col justify-between p-5 border-r border-[#1a2c42] shrink-0 transition-all duration-300 ease-in-out lg:static lg:translate-x-0 ${
+                sidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0'
+              }`}>
                 <div className="space-y-8">
                   {/* Branding Header with custom company context */}
                   <div>
@@ -213,8 +228,8 @@ export default function App() {
                   <nav className="space-y-1.5">
                     <button 
                       type="button" 
-                      onClick={() => setCurrentScreen('dashboard')}
-                      className={`w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center gap-3 transition-colors border-none cursor-pointer ${
+                      onClick={() => { setCurrentScreen('dashboard'); setSidebarOpen(false); }}
+                      className={`w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center gap-3 ui-sidebar-btn border-none cursor-pointer ${
                         currentScreen === 'dashboard'
                           ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30'
                           : 'text-[#8a91a5] hover:bg-[#12233c] hover:text-white'
@@ -226,8 +241,8 @@ export default function App() {
 
                     <button 
                       type="button" 
-                      onClick={() => setCurrentScreen('routes')}
-                      className={`w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center gap-3 transition-colors border-none cursor-pointer ${
+                      onClick={() => { setCurrentScreen('routes'); setSidebarOpen(false); }}
+                      className={`w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center gap-3 ui-sidebar-btn border-none cursor-pointer ${
                         currentScreen === 'routes'
                           ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30'
                           : 'text-[#8a91a5] hover:bg-[#12233c] hover:text-white'
@@ -239,8 +254,8 @@ export default function App() {
 
                     <button 
                       type="button" 
-                      onClick={() => setCurrentScreen('integrations')}
-                      className={`w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center gap-3 transition-colors border-none cursor-pointer ${
+                      onClick={() => { setCurrentScreen('integrations'); setSidebarOpen(false); }}
+                      className={`w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center gap-3 ui-sidebar-btn border-none cursor-pointer ${
                         currentScreen === 'integrations'
                           ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30'
                           : 'text-[#8a91a5] hover:bg-[#12233c] hover:text-white'
@@ -256,8 +271,8 @@ export default function App() {
                 <div className="space-y-2 border-t border-[#1a2c42] pt-4">
                   <button 
                     type="button" 
-                    onClick={() => setShowSupportModal(true)}
-                    className="w-full py-2.5 px-4 rounded-xl text-[#8a91a5] hover:bg-[#12233c] hover:text-white font-bold text-xs flex items-center gap-3 transition-colors border-none text-left cursor-pointer"
+                    onClick={() => { setShowSupportModal(true); setSidebarOpen(false); }}
+                    className="w-full py-2.5 px-4 rounded-xl text-[#8a91a5] hover:bg-[#12233c] hover:text-white font-bold text-xs flex items-center gap-3 ui-sidebar-btn border-none text-left cursor-pointer"
                   >
                     <HelpCircle className="h-4 w-4" />
                     <span>Abrir Chamado</span>
@@ -265,8 +280,8 @@ export default function App() {
 
                   <button 
                     type="button" 
-                    onClick={() => setCurrentScreen('landing')}
-                    className="w-full py-2.5 px-4 rounded-xl text-red-400 hover:bg-red-950/20 font-bold text-xs flex items-center gap-3 transition-colors border-none text-left cursor-pointer"
+                    onClick={() => { setCurrentScreen('landing'); setSidebarOpen(false); }}
+                    className="w-full py-2.5 px-4 rounded-xl text-red-400 hover:bg-red-950/20 font-bold text-xs flex items-center gap-3 ui-sidebar-btn border-none text-left cursor-pointer"
                   >
                     <LogOut className="h-4 w-4 text-red-500" />
                     <span>Sair da Conta</span>
@@ -278,9 +293,20 @@ export default function App() {
               <div className="flex-1 flex flex-col min-w-0">
                 
                 {/* Secondary Topbar Header for Admin Desk (Screenshot 3 & 4 layout aesthetics) */}
-                <header className="h-16 border-b border-gray-200 bg-white flex justify-between items-center px-6 md:px-8 shadow-sm">
-                  <div className="text-xs text-gray-500">
-                    Sincronizador Automático: <span className="text-emerald-600 font-bold">● Ativado e Monitorando</span>
+                <header className="h-16 border-b border-gray-200 bg-white flex justify-between items-center px-4 md:px-8 shadow-sm shrink-0">
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      aria-label={sidebarOpen ? 'Fechar menu' : 'Abrir menu'}
+                      aria-expanded={sidebarOpen}
+                      onClick={() => setSidebarOpen((open) => !open)}
+                      className="ui-btn lg:hidden p-2 rounded-xl text-gray-500 hover:bg-gray-50 hover:text-blue-600 border border-transparent hover:border-gray-200/80"
+                    >
+                      {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                    </button>
+                    <div className="text-xs text-gray-500 hidden sm:block">
+                      Sincronizador Automático: <span className="text-emerald-600 font-bold">● Ativado e Monitorando</span>
+                    </div>
                   </div>
 
                   <div className="flex items-center gap-4">
@@ -288,7 +314,7 @@ export default function App() {
                     <button 
                       type="button" 
                       onClick={() => addToast('Nenhum alerta crítico registrado nesta operação.', 'info')}
-                      className="p-2 border border-gray-100 rounded-xl hover:bg-gray-50 text-gray-500 hover:text-gray-900 transition-colors relative"
+                      className="ui-btn p-2 border border-gray-100 rounded-xl hover:bg-gray-50 text-gray-500 hover:text-gray-900 hover:border-gray-200/80 relative"
                     >
                       <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-blue-600"></span>
                       <Bell className="h-4.5 w-4.5" />
@@ -297,7 +323,7 @@ export default function App() {
                     {/* Technical Profile widget */}
                     <div className="flex items-center gap-3 border-l border-gray-200 pl-4">
                       <div className="text-right">
-                        <span className="font-extrabold text-xs text-[#0b1c30] block">Operador Alves</span>
+                        <span className="font-extrabold text-xs text-[#0b1c30] block">Ricardo Mendes</span>
                         <span className="text-[10px] text-gray-400 font-semibold block leading-none">ID: #021-OP</span>
                       </div>
                       <div className="w-9 h-9 rounded-full bg-[#0b1c30] text-blue-400 font-bold text-xs flex items-center justify-center border border-gray-200 shadow-sm uppercase">
@@ -355,11 +381,11 @@ export default function App() {
                   <HelpCircle className="h-5 w-5 text-blue-600" />
                   <h3 className="font-bold text-sm text-[#0b1c30]">Fale com o Suporte Técnico</h3>
                 </div>
-                <button 
-                  type="button" 
-                  onClick={() => setShowSupportModal(false)}
-                  className="p-1 hover:bg-gray-100 rounded-lg text-gray-400"
-                >
+                  <button 
+                    type="button" 
+                    onClick={() => setShowSupportModal(false)}
+                    className="ui-btn p-1 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600"
+                  >
                   <X className="h-4 w-4" />
                 </button>
               </div>
@@ -397,13 +423,13 @@ export default function App() {
                   <button 
                     type="button" 
                     onClick={() => setShowSupportModal(false)}
-                    className="px-4 py-2 border border-gray-200 text-xs rounded-xl font-bold text-gray-500 hover:bg-gray-50 transition-all text-center"
+                    className="ui-btn px-4 py-2 border border-gray-200/80 text-xs rounded-xl font-bold text-gray-500 hover:bg-gray-50 hover:border-gray-300 text-center"
                   >
                     Voltar
                   </button>
                   <button 
                     type="submit"
-                    className="px-5 py-2 bg-blue-600 text-white text-xs rounded-xl font-bold hover:bg-blue-700 transition-all shadow-md"
+                    className="ui-btn px-5 py-2 bg-blue-600 text-white text-xs rounded-xl font-bold hover:bg-blue-700 shadow-md hover:shadow-lg"
                   >
                     Enviar Chamado
                   </button>

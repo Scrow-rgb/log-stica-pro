@@ -53,7 +53,7 @@ export default function DashboardView({
   const [mapZoom, setMapZoom] = useState<number>(14);
 
   // Stats calculation
-  const totalRoutes = 42;
+  const totalRoutes = 38;
   const completedCount = useMemo(() => deliveries.filter(d => d.status === 'Entregue').length, [deliveries]);
   const activeCount = useMemo(() => deliveries.filter(d => d.status === 'Em rota').length, [deliveries]);
   const failedCount = useMemo(() => deliveries.filter(d => d.status === 'Falhou').length, [deliveries]);
@@ -133,7 +133,7 @@ export default function DashboardView({
             Olá, {companyName}
           </h1>
           <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider mt-0.5">
-            Operador Logístico • {fleetSize} Motoristas Ativos
+            Operação Sudeste • Frota monitorada: 142 veículos
           </p>
         </div>
 
@@ -154,7 +154,7 @@ export default function DashboardView({
       {/* KPI Overviews Row - Screen 3 design with left colored borders */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {/* KPI Card 1: Rotas Ativas */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 relative overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div className="bg-white border border-gray-200 rounded-2xl p-5 relative overflow-hidden shadow-sm flex flex-col justify-between ui-card-lift-subtle ui-border-hover">
           <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-blue-600"></div>
           <div>
             <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Rotas Ativas</p>
@@ -169,47 +169,47 @@ export default function DashboardView({
         </div>
 
         {/* KPI Card 2: Entregas Concluídas */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 relative overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div className="bg-white border border-gray-200 rounded-2xl p-5 relative overflow-hidden shadow-sm flex flex-col justify-between ui-card-lift-subtle ui-border-hover">
           <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-emerald-600"></div>
           <div>
             <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Entregas Concluídas</p>
-            <h3 className="text-2xl font-black text-[#0b1c30] mt-1.5">{156 + completedCount}</h3>
+            <h3 className="text-2xl font-black text-[#0b1c30] mt-1.5">{847 + completedCount}</h3>
           </div>
           <div className="flex items-center gap-1.5 mt-3">
             <span className="flex items-center gap-0.5 bg-emerald-50 text-emerald-600 font-bold text-[10px] px-1.5 py-0.5 rounded-md">
               <TrendingUp className="h-3 w-3" /> +8%
             </span>
-            <span className="text-[10px] text-gray-400 font-semibold">Meta: 200/dia</span>
+            <span className="text-[10px] text-gray-400 font-semibold">Meta: 920/dia</span>
           </div>
         </div>
 
         {/* KPI Card 3: Tempo de Viagem */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 relative overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div className="bg-white border border-gray-200 rounded-2xl p-5 relative overflow-hidden shadow-sm flex flex-col justify-between ui-card-lift-subtle ui-border-hover">
           <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-amber-500"></div>
           <div>
-            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Tempo Médio</p>
-            <h3 className="text-2xl font-black text-[#0b1c30] mt-1.5">24 min</h3>
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Tempo Médio de Entrega</p>
+            <h3 className="text-2xl font-black text-[#0b1c30] mt-1.5">24h</h3>
           </div>
           <div className="flex items-center gap-1.5 mt-3">
             <span className="flex items-center gap-0.5 bg-amber-50 text-amber-600 font-bold text-[10px] px-1.5 py-0.5 rounded-md">
-              <TrendingDown className="h-3 w-3" /> -4%
+              <TrendingDown className="h-3 w-3" /> -6%
             </span>
-            <span className="text-[10px] text-gray-400 font-semibold">Eficiência de rota</span>
+            <span className="text-[10px] text-gray-400 font-semibold">Região metropolitana SP</span>
           </div>
         </div>
 
         {/* KPI Card 4: Custo de Frete por Entrega */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 relative overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div className="bg-white border border-gray-200 rounded-2xl p-5 relative overflow-hidden shadow-sm flex flex-col justify-between ui-card-lift-subtle ui-border-hover">
           <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-blue-500"></div>
           <div>
-            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Custo por Entrega</p>
-            <h3 className="text-2xl font-black text-[#0b1c30] mt-1.5">R$ 8,50</h3>
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Frota Monitorada</p>
+            <h3 className="text-2xl font-black text-[#0b1c30] mt-1.5">142</h3>
           </div>
           <div className="flex items-center gap-1.5 mt-3">
             <span className="flex items-center gap-0.5 bg-emerald-50 text-emerald-600 font-bold text-[10px] px-1.5 py-0.5 rounded-md">
-              <TrendingDown className="h-3 w-3" /> -2%
+              <TrendingUp className="h-3 w-3" /> +3%
             </span>
-            <span className="text-[10px] text-gray-400 font-semibold">Otimizado</span>
+            <span className="text-[10px] text-gray-400 font-semibold">Veículos ativos hoje</span>
           </div>
         </div>
       </div>
@@ -218,7 +218,7 @@ export default function DashboardView({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         
         {/* Interactive Map of São Paulo (Spans 2 cols) */}
-        <div className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between h-[400px] relative group">
+        <div className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between h-[400px] relative group ui-border-hover">
           {/* Map Top Metadata Ribbon */}
           <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-2 pointer-events-none">
             <div className="bg-white/95 backdrop-blur-sm border border-gray-200 px-3 py-1.5 rounded-xl flex items-center gap-2 shadow-sm text-[10px] font-bold text-gray-800">
@@ -295,14 +295,14 @@ export default function DashboardView({
               <button 
                 type="button"
                 onClick={() => setMapZoom(prev => Math.min(prev + 1, 18))} 
-                className="w-8 h-8 rounded-xl bg-white border border-gray-200 shadow-md flex items-center justify-center font-bold text-gray-700 hover:bg-gray-50 transition-colors"
+                className="w-8 h-8 rounded-xl bg-white border border-gray-200 shadow-md flex items-center justify-center font-bold text-gray-700 hover:bg-gray-50 ui-btn hover:border-blue-200/80"
               >
                 +
               </button>
               <button 
                 type="button"
                 onClick={() => setMapZoom(prev => Math.max(prev - 1, 10))} 
-                className="w-8 h-8 rounded-xl bg-white border border-gray-200 shadow-md flex items-center justify-center font-bold text-gray-700 hover:bg-gray-50 transition-colors"
+                className="w-8 h-8 rounded-xl bg-white border border-gray-200 shadow-md flex items-center justify-center font-bold text-gray-700 hover:bg-gray-50 ui-btn hover:border-blue-200/80"
               >
                 -
               </button>
@@ -311,7 +311,7 @@ export default function DashboardView({
         </div>
 
         {/* Dispatch Simulator Controller (Spans 1 col) */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+        <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between ui-border-hover">
           <div>
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xs font-bold text-blue-600 tracking-widest uppercase">DIRECIONAMENTO DE DRIVER</h3>
@@ -351,28 +351,28 @@ export default function DashboardView({
                         <button 
                           type="button"
                           onClick={() => handleSimulateStep(targetItem.id, 'Entregue')}
-                          className="px-2 py-1.5 bg-emerald-600 text-white text-[10px] font-bold rounded-lg hover:bg-emerald-700 transition-colors flex items-center justify-center gap-1.5"
+                          className="px-2 py-1.5 bg-emerald-600 text-white text-[10px] font-bold rounded-lg hover:bg-emerald-700 ui-btn flex items-center justify-center gap-1.5"
                         >
                           <CheckCircle className="h-3 w-3" /> Sucesso (OK)
                         </button>
                         <button 
                           type="button"
                           onClick={() => handleSimulateStep(targetItem.id, 'Falhou')}
-                          className="px-2 py-1.5 bg-red-600 text-white text-[10px] font-bold rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center gap-1.5"
+                          className="px-2 py-1.5 bg-red-600 text-white text-[10px] font-bold rounded-lg hover:bg-red-700 ui-btn flex items-center justify-center gap-1.5"
                         >
                           <XCircle className="h-3 w-3" /> Falhou (Recusa)
                         </button>
                         <button 
                           type="button"
                           onClick={() => handleSimulateStep(targetItem.id, 'Atrasado')}
-                          className="px-2 py-1.5 bg-amber-500 text-white text-[10px] font-bold rounded-lg hover:bg-amber-600 transition-colors flex items-center justify-center gap-1.5"
+                          className="px-2 py-1.5 bg-amber-500 text-white text-[10px] font-bold rounded-lg hover:bg-amber-600 ui-btn flex items-center justify-center gap-1.5"
                         >
                           <AlertTriangle className="h-3 w-3" /> Atrasado (Tráfego)
                         </button>
                         <button 
                           type="button"
                           onClick={() => handleSimulateStep(targetItem.id, 'Em rota')}
-                          className="px-2 py-1.5 bg-blue-600 text-white text-[10px] font-bold rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-1.5"
+                          className="px-2 py-1.5 bg-blue-600 text-white text-[10px] font-bold rounded-lg hover:bg-blue-700 ui-btn flex items-center justify-center gap-1.5"
                         >
                           <RotateCw className="h-3 w-3" /> Reiniciar rota
                         </button>
@@ -398,28 +398,28 @@ export default function DashboardView({
               <input 
                 name="disp_client"
                 type="text" 
-                placeholder="Cliente (Ex: Armarinho Fernando)"
+                placeholder="Cliente (Ex: Comercial Mendes Atacado)"
                 className="w-full px-3 py-2 bg-gray-50 border border-gray-200 text-[11px] rounded-lg text-gray-950 focus:ring-1 focus:ring-blue-600 font-medium"
                 required
               />
               <input 
                 name="disp_address"
                 type="text" 
-                placeholder="Endereço (Ex: Av. Prestes Maia, 240)"
+                placeholder="Endereço (Ex: Rua Vergueiro, 2253, Vila Mariana)"
                 className="w-full px-3 py-2 bg-gray-50 border border-gray-200 text-[11px] rounded-lg text-gray-950 focus:ring-1 focus:ring-blue-600 font-medium"
                 required
               />
               <input 
                 name="disp_cep"
                 type="text" 
-                placeholder="CEP (Ex: 01031-000)"
+                placeholder="CEP (Ex: 04101-300)"
                 className="w-full px-3 py-2 bg-gray-50 border border-gray-200 text-[11px] rounded-lg text-gray-950 focus:ring-1 focus:ring-blue-600 font-medium"
               />
             </div>
 
             <button 
               type="submit"
-              className="w-full bg-[#0b1c30] text-white py-2 rounded-lg font-bold text-[11px] hover:bg-gray-850 active:scale-95 transition-all flex items-center justify-center gap-1.5"
+              className="w-full bg-[#0b1c30] text-white py-2 rounded-lg font-bold text-[11px] hover:bg-gray-850 ui-btn flex items-center justify-center gap-1.5"
             >
               <Send className="h-3 w-3" /> Enviar Driver Direto
             </button>
@@ -428,7 +428,7 @@ export default function DashboardView({
       </div>
 
       {/* Monitoramento de Entregas Data Table block - Screen 3 design */}
-      <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm ui-border-hover">
         <div className="px-5 py-4 border-b border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h3 className="text-sm font-bold text-[#0b1c30]">Monitoramento de Entregas</h3>
@@ -452,7 +452,7 @@ export default function DashboardView({
             <button 
               type="button"
               onClick={() => { setSearchTerm(''); setStatusFilter('All'); setSelectedDeliveryId(null); }}
-              className="px-3 py-1.5 border border-gray-200 text-xs rounded-xl font-bold text-gray-600 hover:bg-gray-50 transition-colors bg-white flex items-center gap-1.5"
+              className="px-3 py-1.5 border border-gray-200/80 text-xs rounded-xl font-bold text-gray-600 hover:bg-gray-50 ui-btn bg-white flex items-center gap-1.5 hover:border-gray-300/80"
             >
               Limpar Filtros
             </button>
@@ -492,7 +492,7 @@ export default function DashboardView({
                     <tr 
                       key={deliv.id}
                       onClick={() => handleSelectDelivery(deliv.id)}
-                      className={`border-b border-gray-100 hover:bg-gray-50/80 transition-colors cursor-pointer ${
+                      className={`border-b border-gray-100 hover:bg-gray-50/80 ui-card cursor-pointer ${
                         isSelected ? 'bg-blue-50/30' : ''
                       }`}
                     >
@@ -514,7 +514,7 @@ export default function DashboardView({
                             <button
                               type="button"
                               onClick={() => handleSimulateStep(deliv.id, 'Entregue')}
-                              className="px-2 py-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded text-[10px] font-bold transition-all"
+                              className="px-2 py-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded text-[10px] font-bold ui-btn"
                             >
                               Entregar
                             </button>
@@ -522,7 +522,7 @@ export default function DashboardView({
                           <button
                             type="button"
                             onClick={() => setSelectedDeliveryId(deliv.id)}
-                            className="p-1 text-gray-400 hover:text-blue-600 transition-colors"
+                            className="p-1 text-gray-400 hover:text-blue-600 ui-btn"
                             title="Ver no painel lateral"
                           >
                             <ChevronRight className="h-4 w-4" />

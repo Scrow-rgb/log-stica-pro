@@ -26,11 +26,11 @@ interface OnboardingWizardProps {
 
 export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWizardProps) {
   const [step, setStep] = useState<number>(1); // 1: Empresa, 2: Conexão, 3: Primeira Rota, 4: Sucesso
-  const [companyName, setCompanyName] = useState<string>('Distribuidora Alves');
-  const [segment, setSegment] = useState<string>('Alimentício');
-  const [fleetSize, setFleetSize] = useState<number>(12);
+  const [companyName, setCompanyName] = useState<string>('TransMendes Logística');
+  const [segment, setSegment] = useState<string>('E-commerce Geral');
+  const [fleetSize, setFleetSize] = useState<number>(18);
   const [integration, setIntegration] = useState<string>('VTEX');
-  const [vtexAccount, setVtexAccount] = useState<string>('alves_vtex_prod');
+  const [vtexAccount, setVtexAccount] = useState<string>('transmendes_vtex_prod');
   const [calculatingRoute, setCalculatingRoute] = useState<boolean>(false);
   const [routeStepCompleted, setRouteStepCompleted] = useState<boolean>(false);
 
@@ -89,7 +89,7 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
           <a 
             href="#suporte" 
             onClick={(e) => { e.preventDefault(); alert('Nosso suporte entrará em contato em seu e-mail!'); }}
-            className="flex items-center gap-1 text-blue-600 hover:underline"
+            className="flex items-center gap-1 text-blue-600 hover:underline ui-link"
           >
             <HelpCircle className="h-4 w-4" /> Suporte
           </a>
@@ -120,7 +120,7 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
                     onClick={() => {
                       if (s.num < step) setStep(s.num);
                     }}
-                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 cursor-pointer ${
+                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ui-card cursor-pointer ${
                       isActive 
                         ? 'bg-blue-600 text-white shadow-md scale-110 shadow-blue-200' 
                         : isCompleted 
@@ -142,7 +142,7 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
         </div>
 
         {/* Wizard Form Workspace Card */}
-        <div className="w-full max-w-xl bg-white border border-gray-200 rounded-3xl p-8 shadow-xl relative min-h-[440px] flex flex-col justify-between">
+        <div className="w-full max-w-xl bg-white border border-gray-200 rounded-3xl p-8 shadow-xl relative min-h-[440px] flex flex-col justify-between ui-border-hover ui-card-lift-subtle">
           <AnimatePresence mode="wait">
             {step === 1 && (
               <motion.div
@@ -168,7 +168,7 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
                       className="w-full px-4 py-3 bg-blue-50/50 border border-blue-200 text-gray-950 rounded-xl focus:ring-2 focus:ring-blue-600 focus:bg-white focus:border-blue-600 transition-all font-medium"
-                      placeholder="Ex: Distribuidora Alves"
+                      placeholder="Ex: TransMendes Logística"
                     />
                   </div>
 
@@ -199,7 +199,7 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
                         value={fleetSize || ''}
                         onChange={(e) => setFleetSize(parseInt(e.target.value) || 0)}
                         className="w-full px-4 py-3 bg-blue-50/50 border border-blue-200 text-gray-950 rounded-xl focus:ring-2 focus:ring-blue-600 focus:bg-white focus:border-blue-600 transition-all font-medium"
-                        placeholder="Ex: 5"
+                        placeholder="Ex: 18"
                       />
                     </div>
                   </div>
@@ -228,10 +228,10 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
                         type="button"
                         key={item}
                         onClick={() => setIntegration(item)}
-                        className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 text-xs font-bold transition-all ${
+                        className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 text-xs font-bold ui-btn ${
                           integration === item 
-                            ? 'bg-blue-50 border-blue-600 text-blue-600 shadow-sm' 
-                            : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
+                            ? 'bg-blue-50 border-blue-600/80 text-blue-600 shadow-sm' 
+                            : 'bg-white border-gray-200/80 text-gray-600 hover:bg-gray-50 hover:border-gray-300/80'
                         }`}
                       >
                         <Store className="h-5 w-5" />
@@ -251,7 +251,7 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
                           value={vtexAccount}
                           onChange={(e) => setVtexAccount(e.target.value)}
                           className="w-full px-3 py-2 bg-white border border-gray-300 text-xs rounded-lg text-gray-900 focus:ring-1 focus:ring-blue-600 font-medium"
-                          placeholder="EX: alves_vtex_prod"
+                          placeholder="EX: transmendes_vtex_prod"
                         />
                       </div>
                       <p className="text-[10px] text-gray-400 leading-normal">Seus pedidos VTEX marcados como "Pronto para entrega" serão sincronizados a cada 2 minutos no painel.</p>
@@ -289,7 +289,7 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
                       <div className="min-w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold mt-0.5">🛫</div>
                       <div>
                         <h4 className="text-xs font-bold text-gray-900">ORIGEM DO DESPACHO (SEU CD)</h4>
-                        <p className="text-xs text-gray-500 font-semibold mt-0.5">CD LogiFlow - Vila Leopoldina, São Paulo - SP</p>
+                        <p className="text-xs text-gray-500 font-semibold mt-0.5">CD TransMendes — Av. Dr. Gastão Vidigal, 1946, Vila Leopoldina, São Paulo - SP</p>
                       </div>
                     </div>
 
@@ -300,15 +300,15 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
                       <ul className="space-y-1.5">
                         <li className="flex items-center gap-2 text-xs text-gray-600">
                           <MapPin className="h-3 w-3 text-red-500 shrink-0" />
-                          <span>Rua Augusta, 1200 - Consolação</span>
+                          <span>Drogaria Saúde Total — Rua da Consolação, 2302, Consolação</span>
                         </li>
                         <li className="flex items-center gap-2 text-xs text-gray-600">
                           <MapPin className="h-3 w-3 text-red-500 shrink-0" />
-                          <span>Av. Paulista, 1578 - Bela Vista</span>
+                          <span>Papelaria Central do Estudante — Av. Paulista, 1578, Bela Vista</span>
                         </li>
                         <li className="flex items-center gap-2 text-xs text-gray-600">
                           <MapPin className="h-3 w-3 text-red-500 shrink-0" />
-                          <span>Rua Oscar Freire, 800 - Jardins</span>
+                          <span>Mercado Bom Preço — Rua Oscar Freire, 800, Jardins</span>
                         </li>
                       </ul>
                     </div>
@@ -344,7 +344,7 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
 
                 <div className="space-y-2">
                   <h2 className="text-2xl font-black text-gray-900 tracking-tight">Onboarding concluído!</h2>
-                  <p className="text-sm text-gray-500 max-w-[420px] mx-auto">Sua empresa foi cadastrada. O ambiente de testes sandbox foi povoado com frotas fictícias, 4 rotas dinâmicas e integração com chave de API gerada.</p>
+                  <p className="text-sm text-gray-500 max-w-[420px] mx-auto">Sua empresa foi cadastrada. O ambiente sandbox foi povoado com 142 veículos monitorados, 38 rotas ativas e integração VTEX com chave de API gerada.</p>
                 </div>
 
                 <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 text-left space-y-2.5 max-w-[400px] mx-auto text-xs font-semibold">
@@ -372,7 +372,7 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
                 type="button"
                 id="btn_onb_back"
                 onClick={() => setStep(step - 1)}
-                className="text-xs font-bold text-gray-500 hover:text-gray-900 px-4 py-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
+                className="text-xs font-bold text-gray-500 hover:text-gray-900 px-4 py-2 border border-gray-200/80 rounded-xl hover:bg-gray-50 ui-btn hover:border-gray-300/80"
               >
                 Voltar
               </button>
@@ -381,7 +381,7 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
                 type="button"
                 id="btn_onb_cancel"
                 onClick={onCancel}
-                className="text-xs font-bold text-gray-400 hover:text-gray-700 hover:underline px-2 py-2"
+                className="text-xs font-bold text-gray-400 hover:text-gray-700 hover:underline px-2 py-2 ui-link"
               >
                 Sair
               </button>
@@ -392,12 +392,12 @@ export default function OnboardingWizard({ onComplete, onCancel }: OnboardingWiz
               id="btn_onb_next"
               disabled={step === 1 && !isEmpresaValid}
               onClick={handleNextStep}
-              className={`px-6 py-3 rounded-xl font-bold text-xs flex items-center gap-2 transition-all shadow-md active:scale-95 border-none ${
+              className={`px-6 py-3 rounded-xl font-bold text-xs flex items-center gap-2 ui-btn shadow-md border-none ${
                 step === 1 && !isEmpresaValid 
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed shadow-none' 
                   : step === 4 
-                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-100' 
-                  : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-100'
+                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-100 hover:shadow-lg hover:-translate-y-0.5' 
+                  : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-100 hover:shadow-lg hover:-translate-y-0.5'
               }`}
             >
               <span>{step === 4 ? 'Acessar o Painel Central' : step === 3 ? 'Otimizar & Cadastrar' : 'Continuar'}</span>

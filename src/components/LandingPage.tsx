@@ -6,15 +6,15 @@
 import { useState } from 'react';
 import RouteMapIllustration from './RouteMapIllustration';
 import { motion } from 'motion/react';
-import { 
-  ArrowRight, 
-  MapPin, 
-  CheckCircle, 
-  TrendingUp, 
-  Truck, 
-  Shield, 
-  Clock, 
-  Zap, 
+import {
+  ArrowRight,
+  MapPin,
+  CheckCircle,
+  TrendingUp,
+  Truck,
+  Shield,
+  Clock,
+  Zap,
   ChevronRight,
   Globe,
   Smartphone,
@@ -36,7 +36,7 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
           <Truck className="h-6 w-6 text-blue-600" />
           <span className="font-extrabold text-xl tracking-tight text-blue-600">Logística Pro</span>
         </div>
-        
+
         <nav className="hidden md:flex items-center gap-8">
           <a href="#features" className="text-[#434655] hover:text-blue-600 transition-colors font-medium text-sm">Funcionalidades</a>
           <a href="#pricing" className="text-[#434655] hover:text-blue-600 transition-colors font-medium text-sm">Preços</a>
@@ -44,18 +44,18 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
         </nav>
 
         <div className="flex items-center gap-4">
-          <button 
+          <button
             type="button"
             id="btn_sandbox_header"
-            onClick={onEnterSandbox} 
+            onClick={onEnterSandbox}
             className="text-xs text-blue-600 font-semibold hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 transition-all transition-transform active:scale-95"
           >
             Demo Rápida
           </button>
-          <button 
+          <button
             type="button"
             id="btn_onboarding_header"
-            onClick={onStartFreeTrial} 
+            onClick={onStartFreeTrial}
             className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition-all shadow-md hover:shadow-lg active:scale-95"
           >
             Começar Grátis
@@ -66,35 +66,35 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-12 pb-20 md:py-24 max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="z-10"
           >
             <span className="inline-block bg-[#dbe1ff] text-[#003ea8] px-4 py-1.5 rounded-full font-semibold text-xs mb-6 uppercase tracking-wider">
-              ⚡ EFICIÊNCIA LOGÍSTICA PARA PMEs
+              Entrega de última milha para lojas online
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#0b1c30] leading-[1.1] tracking-tight mb-6">
-              Otimize suas entregas, <span className="text-blue-600">reduza custos</span>.
+              Suas entregas no prazo, <span className="text-blue-600">sem estourar o frete</span>.
             </h1>
             <p className="text-base md:text-lg text-[#434655] mb-8 max-w-[540px] leading-relaxed">
-              A solução completa de Last-Mile para pequenas e médias empresas brasileiras. Gerencie rotas de forma inteligente, acompanhe motoristas em tempo real e integre seu e-commerce em minutos.
+              Monta a rota, acompanha o motorista e avisa o cliente — tudo no mesmo painel. Conecta com VTEX, Shopify e outras plataformas em poucos cliques, sem depender de planilha.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
+              <button
                 type="button"
                 id="btn_hero_onboarding"
-                onClick={onStartFreeTrial} 
+                onClick={onStartFreeTrial}
                 className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 active:scale-95 flex items-center justify-center gap-2"
               >
-                Começar grátis 
+                Começar grátis
                 <ArrowRight className="h-5 w-5" />
               </button>
-              <button 
+              <button
                 type="button"
                 id="btn_hero_sandbox"
-                onClick={onEnterSandbox} 
+                onClick={onEnterSandbox}
                 className="border-2 border-[#737686] text-[#0b1c30] px-8 py-4 rounded-xl font-bold text-base hover:bg-white hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 flex items-center justify-center gap-2 bg-transparent"
               >
                 Ver demonstração
@@ -102,19 +102,27 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
             </div>
 
             {/* Quick Metrics Badge */}
-            <div className="mt-8 flex items-center gap-6 text-[#434655] border-t border-gray-200 pt-6">
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[#434655] border-t border-gray-200 pt-6">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-5 w-5 text-green-600" />
                 <span className="text-sm font-semibold">Sem taxa de adesão</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-5 w-5 text-green-600" />
-                <span className="text-sm font-semibold">Instalação em 5 minutos</span>
+                <span className="text-sm font-semibold">Configuração em 5 minutos</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="h-5 w-5 text-blue-600" />
+                <span className="text-sm font-semibold">Tempo médio de entrega: 24h</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Truck className="h-5 w-5 text-blue-600" />
+                <span className="text-sm font-semibold">Frota monitorada: 142 veículos</span>
               </div>
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -126,11 +134,11 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
 
             {/* Simulated Desktop Preview styled nicely */}
             <div className="bg-white/80 backdrop-blur-md rounded-3xl p-3 shadow-2xl border border-gray-200 overflow-hidden transform hover:-translate-y-2 transition-transform duration-500">
-              <img 
-                alt="Dashboard Logística Pro" 
-                className="rounded-2xl w-full object-cover shadow-inner hover:scale-[1.01] transition-transform duration-700" 
+              <img
+                alt="Dashboard Logística Pro"
+                className="rounded-2xl w-full object-cover shadow-inner hover:scale-[1.01] transition-transform duration-700"
                 referrerPolicy="no-referrer"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9f3jZW3PN5Agezl6m73iDvGI-s0w5q-fDB6AFIB6xjDS7lrtLnuXKJFoStowzjg26MhcPKGkrU982Px-HsqBP5QptQcS9UTQVQhGmY9EsWz-2QdTdzALBtGV0jV36iKt6zr5MZ_1taQdLAxwFYSXLuuwC2oBBIi2trYoPeJx2wjElqUQ-ofUWa45YVViVF2RxnSYgVrDAJjB3FuxZwuuUE9QPD-IltxPVuWNheGKbmmZg32K_9Tr2pCtjSBlpm7CXmFX_ARay2rk" 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9f3jZW3PN5Agezl6m73iDvGI-s0w5q-fDB6AFIB6xjDS7lrtLnuXKJFoStowzjg26MhcPKGkrU982Px-HsqBP5QptQcS9UTQVQhGmY9EsWz-2QdTdzALBtGV0jV36iKt6zr5MZ_1taQdLAxwFYSXLuuwC2oBBIi2trYoPeJx2wjElqUQ-ofUWa45YVViVF2RxnSYgVrDAJjB3FuxZwuuUE9QPD-IltxPVuWNheGKbmmZg32K_9Tr2pCtjSBlpm7CXmFX_ARay2rk"
               />
             </div>
           </motion.div>
@@ -139,23 +147,23 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
 
       {/* Integration Logos */}
       <section className="mb-20 text-center py-10 border-y border-[#c3c6d7] bg-white" id="integrations">
-        <p className="text-xs font-bold text-[#737686] uppercase tracking-[0.2em] mb-6">INTEGRE COM AS PRINCIPAIS PLATAFORMAS</p>
+        <p className="text-xs font-bold text-[#737686] uppercase tracking-[0.2em] mb-6">Conecte com a loja que você já usa</p>
         <div className="max-w-5xl mx-auto flex flex-wrap justify-center items-center gap-8 md:gap-20 px-6">
           <div className="flex flex-col items-center group cursor-pointer">
             <span className="font-sans font-black text-[#0b1c30] text-2xl group-hover:text-blue-600 transition-colors">VTEX</span>
-            <span className="text-[10px] text-[#737686] font-semibold mt-1">Conexão Nativa</span>
+            <span className="text-[10px] text-[#737686] font-semibold mt-1">Integração direta</span>
           </div>
           <div className="flex flex-col items-center group cursor-pointer">
             <span className="font-sans font-black text-[#0b1c30] text-2xl group-hover:text-[#9c27b0] transition-colors">Shopify</span>
-            <span className="text-[10px] text-[#737686] font-semibold mt-1">Plug & Play</span>
+            <span className="text-[10px] text-[#737686] font-semibold mt-1">Configuração rápida</span>
           </div>
           <div className="flex flex-col items-center group cursor-pointer">
             <span className="font-sans font-black text-[#0b1c30] text-xl group-hover:text-blue-500 transition-colors">Nuvemshop</span>
-            <span className="text-[10px] text-[#737686] font-semibold mt-1">Homologado</span>
+            <span className="text-[10px] text-[#737686] font-semibold mt-1">Pedidos sincronizados</span>
           </div>
           <div className="flex flex-col items-center group cursor-pointer">
             <span className="font-sans font-black text-[#0b1c30] text-xl group-hover:text-amber-500 transition-colors">Loja Integrada</span>
-            <span className="text-[10px] text-[#737686] font-semibold mt-1">Sincronização Ativa</span>
+            <span className="text-[10px] text-[#737686] font-semibold mt-1">Atualização em tempo real</span>
           </div>
         </div>
       </section>
@@ -163,8 +171,8 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
       {/* Bento Grid Features */}
       <section className="mb-20 max-w-[1440px] mx-auto px-6 lg:px-12 scroll-mt-20" id="features">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0b1c30] tracking-tight">Visibilidade Total da Operação</h2>
-          <p className="text-[#434655] mt-2 max-w-xl mx-auto">Tecnologia avançada de roteirização simplificada para acelerar despachos e garantir que cada pacote chegue no menor tempo.</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0b1c30] tracking-tight">Do pedido à porta, sem planilha</h2>
+          <p className="text-[#434655] mt-2 max-w-xl mx-auto">Menos tempo montando rota no Google Maps. Menos pacote parado no galpão porque ninguém sabia qual motorista pegar.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -174,13 +182,13 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
               <div className="bg-blue-100 p-3 rounded-xl w-fit mb-6 text-blue-600">
                 <Zap className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-bold text-[#0b1c30] mb-2">Roteirização Inteligente</h3>
+              <h3 className="text-xl font-bold text-[#0b1c30] mb-2">Rotas automáticas por região</h3>
               <p className="text-[#434655] text-sm leading-relaxed mb-6">
-                Nosso algoritmo inteligente agrupa pedidos geograficamente e desenha o fluxo ideal de paradas, reduzindo a quilometragem rodada em até 30% em centros urbanos movimentados como São Paulo, RJ e BH.
+                O sistema agrupa pedidos por bairro e monta a sequência de paradas. Em SP, RJ e BH, operações parecidas com a sua costumam cortar até 30% da quilometragem — menos gasolina e menos hora parada no trânsito.
               </p>
               <div className="flex gap-2">
-                <span className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold">Até -30% Km</span>
-                <span className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold">Economia de Combustível</span>
+                <span className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold">Até -30% de km</span>
+                <span className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold">Menos combustível</span>
               </div>
             </div>
 
@@ -197,13 +205,13 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
               <MapPin className="h-6 w-6" />
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-2">Track & Trace</h3>
+              <h3 className="text-xl font-bold mb-2">Rastreio em tempo real</h3>
               <p className="text-blue-100 text-sm leading-relaxed mb-6">
-                Rastreamento em tempo real para os seus clientes com notificações interativas automáticas enviadas direto via WhatsApp ao alterar o status do pacote.
+                Seu cliente acompanha a entrega pelo link. Quando o status muda, a mensagem vai pro WhatsApp — sem você responder a mesma pergunta cinco vezes no SAC.
               </p>
               <div className="flex items-center gap-2 bg-blue-700/55 p-3 rounded-xl">
                 <Smartphone className="h-5 w-5 text-white" />
-                <span className="text-xs font-semibold">Simplicidade Móvel para Motoristas</span>
+                <span className="text-xs font-semibold">App leve para o motorista</span>
               </div>
             </div>
           </div>
@@ -216,7 +224,7 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
               </div>
               <h3 className="text-lg font-bold text-[#0b1c30] mb-1">Comprovante Digital</h3>
               <p className="text-[#434655] text-xs leading-relaxed">
-                Proof of Delivery (POD) robusto e sem papel. Capture fotos das faturas assinadas e assinaturas diretamente na tela do smartphone do seu entregador.
+                Foto e assinatura direto no celular do entregador. Acabou o papel que some ou a foto borrada que o cliente não aceita na hora de contestar a entrega.
               </p>
             </div>
           </div>
@@ -227,22 +235,22 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
               <div className="bg-indigo-50 p-3 rounded-xl w-fit mb-4 text-indigo-600">
                 <Clock className="h-5 w-5" />
               </div>
-              <h3 className="text-lg font-bold text-[#0b1c30] mb-1">Dashboard de Performance</h3>
+              <h3 className="text-lg font-bold text-[#0b1c30] mb-1">Painel da operação</h3>
               <p className="text-[#434655] text-xs leading-relaxed">
-                Acompanhe o andamento geral das frotas com indicadores vitais em tempo real: volume parado, tempo de descarga por motorista, percursos duplicados e despesas brutas.
+                Volume parado, tempo parado por motorista, rotas repetidas e custo de frete — tudo num lugar, atualizado ao vivo. Você enxerga o gargalo antes de virar prejuízo no fim do mês.
               </p>
             </div>
-            
+
             <div className="flex gap-3 shrink-0">
               <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100 text-center min-w-[100px]">
-                <p className="text-[10px] font-bold text-emerald-800 uppercase">Eficiência</p>
-                <p className="text-2xl font-black text-[#006c49]">98%</p>
-                <span className="text-[9px] text-[#006c49] font-semibold">↑ Excelente</span>
+                <p className="text-[10px] font-bold text-emerald-800 uppercase">No prazo</p>
+                <p className="text-2xl font-black text-[#006c49]">97,3%</p>
+                <span className="text-[9px] text-[#006c49] font-semibold">↑ acima da meta</span>
               </div>
               <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center min-w-[100px]">
                 <p className="text-[10px] font-bold text-blue-800 uppercase">Entregas</p>
-                <p className="text-2xl font-black text-blue-600">1.2k</p>
-                <span className="text-[9px] text-blue-600 font-semibold">Este Mês</span>
+                <p className="text-2xl font-black text-blue-600">2.847</p>
+                <span className="text-[9px] text-blue-600 font-semibold">Este mês</span>
               </div>
             </div>
           </div>
@@ -253,20 +261,20 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
       <section className="bg-white py-16 scroll-mt-20">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-2">RESULTADOS COMPROVADOS</span>
-            <h2 className="text-3xl font-bold tracking-tight text-[#0b1c30]">Por que mudar para o Logística Pro?</h2>
+            <span className="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-2">O que muda na prática</span>
+            <h2 className="text-3xl font-bold tracking-tight text-[#0b1c30]">O frete está comendo sua margem?</h2>
             <p className="text-[#434655] mt-4 mb-6 leading-relaxed">
-              O frete de última milha (last-mile) consome até 53% do orçamento de envio. Nossa plataforma foi planejada para dar visibilidade estrita por motorista e automatizar a roteirização de pacotes do e-commerce.
+              A última milha pode representar mais da metade do que você gasta em envio. Aqui você vê entrega por entrega e motorista por motorista — e monta rota sem abrir o mapa linha por linha.
             </p>
-            
+
             <div className="space-y-4">
               <div className="flex gap-3">
                 <div className="bg-blue-100 p-2 rounded-lg text-blue-600 h-fit">
                   <TrendingUp className="h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-sm text-[#0b1c30]">Redução de custos operacionais</h4>
-                  <p className="text-xs text-[#434655]">Menos quilômetros rodados resultam diretamente em menos manutenções de veículos e menor consumo de gasolina.</p>
+                  <h4 className="font-semibold text-sm text-[#0b1c30]">Menos km, menos custo fixo</h4>
+                  <p className="text-xs text-[#434655]">Cada rota mal feita vira gasolina, manutenção e hora extra. Cortar quilometragem aparece direto no caixa, não só no relatório.</p>
                 </div>
               </div>
               <div className="flex gap-3">
@@ -274,25 +282,25 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                   <Star className="h-5 w-5 fill-blue-600 text-blue-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-sm text-[#0b1c30]">Fidelização e menor taxa de reclamações</h4>
-                  <p className="text-xs text-[#434655]">Clientes finais felizes com links e-commerce que mostram de verdade onde o motorista está em cima de mapas ricos.</p>
+                  <h4 className="font-semibold text-sm text-[#0b1c30]">Menos ligação no SAC</h4>
+                  <p className="text-xs text-[#434655]">Quando o cliente vê onde o pacote está, para de perguntar &quot;cadê meu pedido?&quot;. O link de rastreio mostra mapa e previsão de chegada.</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200">
-            <h3 className="font-bold text-[#0b1c30] text-sm mb-4">Veja seu potencial de economia imediato:</h3>
+            <h3 className="font-bold text-[#0b1c30] text-sm mb-4">Quanto dá para economizar por mês?</h3>
             <div className="space-y-4">
               <div>
                 <label htmlFor="input_deliveries_per_day" className="block text-xs font-medium text-gray-500 mb-1">Entregas diárias estimadas</label>
-                <input 
+                <input
                   id="input_deliveries_per_day"
-                  type="range" 
-                  min="10" 
-                  max="500" 
-                  value={deliveries} 
+                  type="range"
+                  min="10"
+                  max="500"
+                  value={deliveries}
                   onChange={(e) => setDeliveries(Number(e.target.value))}
-                  className="w-full accent-blue-600 h-2 bg-gray-200 rounded-lg cursor-pointer" 
+                  className="w-full accent-blue-600 h-2 bg-gray-200 rounded-lg cursor-pointer"
                 />
                 <div className="flex justify-between text-xs font-semibold text-gray-500 mt-1">
                   <span>10 entregas</span>
@@ -307,7 +315,7 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                   <span className="text-3xl font-black text-blue-600 font-mono">R$ {Math.round(deliveries * 32.4).toLocaleString('pt-BR')}</span>
                   <span className="text-xs font-medium text-emerald-600">/mês economizados</span>
                 </div>
-                <p className="text-[10px] text-gray-400 mt-2">Cálculo baseado na diminuição média de 25% de gasolina e ganho de 19% de velocidade em rotas otimizadas.</p>
+                <p className="text-[10px] text-gray-400 mt-2">Estimativa com base em 25% a menos de combustível e rotas mais curtas no dia a dia da operação.</p>
               </div>
             </div>
           </div>
@@ -318,8 +326,8 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
       <section className="py-20 bg-[#f8f9ff] scroll-mt-20" id="pricing">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold tracking-tight text-[#0b1c30]">Planos que acompanham seu crescimento</h2>
-            <p className="text-[#434655] mt-2 text-sm">Sem taxas de implantação. Cancele e altere planos quando quiser.</p>
+            <h2 className="text-3xl font-extrabold tracking-tight text-[#0b1c30]">Pague pelo volume que você entrega</h2>
+            <p className="text-[#434655] mt-2 text-sm">Sem taxa de implantação. Troque ou cancele o plano quando fizer sentido para a operação.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
@@ -330,10 +338,10 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                 <div className="flex items-baseline gap-1 mb-4">
                   <span className="text-4xl font-extrabold text-[#0b1c30]">R$0</span>
                 </div>
-                <p className="text-xs text-[#737686] mb-6">Para testes e pequenos negócios locais</p>
-                
+                <p className="text-xs text-[#737686] mb-6">Para testar com poucos pedidos por mês</p>
+
                 <hr className="border-gray-100 mb-6" />
-                
+
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center gap-2 text-sm text-[#434655]">
                     <CheckCircle className="h-4 w-4 text-emerald-600 shrink-0" />
@@ -341,7 +349,7 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                   </li>
                   <li className="flex items-center gap-2 text-sm text-[#434655]">
                     <CheckCircle className="h-4 w-4 text-emerald-600 shrink-0" />
-                    <span>Roteirização básica</span>
+                    <span>Montagem manual de rotas</span>
                   </li>
                   <li className="flex items-center gap-2 text-sm text-[#434655]">
                     <CheckCircle className="h-4 w-4 text-emerald-600 shrink-0" />
@@ -350,10 +358,10 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                 </ul>
               </div>
 
-              <button 
+              <button
                 type="button"
                 id="btn_plan_free"
-                onClick={onStartFreeTrial} 
+                onClick={onStartFreeTrial}
                 className="w-full py-3 px-4 border-2 border-blue-600 text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition-colors text-center text-sm"
               >
                 Começar Agora
@@ -371,8 +379,8 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                   <span className="text-4xl font-extrabold text-[#0b1c30]">R$199</span>
                   <span className="text-[#737686] text-sm">/mês</span>
                 </div>
-                <p className="text-xs text-[#737686] mb-6">Ideal para operações em expansão de PMEs</p>
-                
+                <p className="text-xs text-[#737686] mb-6">Para quem já passou de dezenas de entregas por dia</p>
+
                 <hr className="border-gray-100 mb-6" />
 
                 <ul className="space-y-4 mb-8">
@@ -382,7 +390,7 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                   </li>
                   <li className="flex items-center gap-2 text-sm text-[#434655]">
                     <CheckCircle className="h-4 w-4 text-emerald-600 shrink-0" />
-                    <span>Roteirização avançada com AI</span>
+                    <span>Rotas automáticas por região</span>
                   </li>
                   <li className="flex items-center gap-2 text-sm text-[#434655]">
                     <CheckCircle className="h-4 w-4 text-emerald-600 shrink-0" />
@@ -395,10 +403,10 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                 </ul>
               </div>
 
-              <button 
+              <button
                 type="button"
                 id="btn_plan_prof"
-                onClick={onStartFreeTrial} 
+                onClick={onStartFreeTrial}
                 className="w-full py-3 px-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 hover:shadow-lg transition-all text-center text-sm shadow-md"
               >
                 Assinar Agora
@@ -412,8 +420,8 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                 <div className="flex items-baseline mb-4">
                   <span className="text-2xl font-extrabold text-[#0b1c30]">Sob consulta</span>
                 </div>
-                <p className="text-xs text-[#737686] mb-6">Para frotas maiores e necessidades sob demanda</p>
-                
+                <p className="text-xs text-[#737686] mb-6">Para frotas grandes ou integrações sob medida</p>
+
                 <hr className="border-gray-100 mb-6" />
 
                 <ul className="space-y-4 mb-8">
@@ -436,10 +444,10 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                 </ul>
               </div>
 
-              <button 
+              <button
                 type="button"
                 id="btn_plan_ent"
-                onClick={onStartFreeTrial} 
+                onClick={onStartFreeTrial}
                 className="w-full py-3 px-4 bg-gray-900 text-white font-bold rounded-xl hover:bg-gray-800 transition-colors text-center text-sm"
               >
                 Falar com Vendas
@@ -449,33 +457,99 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white scroll-mt-20">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extrabold tracking-tight text-[#0b1c30]">Quem já roda com a gente</h2>
+            <p className="text-[#434655] mt-2 text-sm max-w-xl mx-auto">Operadores de entrega em São Paulo, Rio de Janeiro, Belo Horizonte e Curitiba compartilham o impacto na operação diária.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="bg-[#f8f9ff] border border-gray-200 rounded-2xl p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
+              <div>
+                <div className="flex gap-1 mb-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-sm text-[#434655] leading-relaxed italic">
+                  &quot;Reduzimos 28% do custo de frete em três meses. Antes a rota saía no feeling — hoje o sistema monta sozinho por bairro e a frota para menos tempo no trânsito da Marginal.&quot;
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-200">
+                <p className="font-bold text-sm text-[#0b1c30]">Carlos Mendes</p>
+                <p className="text-xs text-[#737686]">Diretor de Operações, Distribuidora Mendes &amp; Filhos</p>
+                <p className="text-[10px] text-blue-600 font-semibold mt-1">Campinas, SP</p>
+              </div>
+            </div>
+
+            <div className="bg-[#f8f9ff] border border-gray-200 rounded-2xl p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
+              <div>
+                <div className="flex gap-1 mb-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-sm text-[#434655] leading-relaxed italic">
+                  &quot;Perdíamos quase duas horas por dia montando rota no Google Maps. Agora são 15 minutos e os 23 motos saem organizados pela Zona Sul do Rio sem retrabalho no galpão de Santa Cruz.&quot;
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-200">
+                <p className="font-bold text-sm text-[#0b1c30]">Fernanda Rocha</p>
+                <p className="text-xs text-[#737686]">Gerente Logística, Empório Bebidas Carioca</p>
+                <p className="text-[10px] text-blue-600 font-semibold mt-1">Rio de Janeiro, RJ</p>
+              </div>
+            </div>
+
+            <div className="bg-[#f8f9ff] border border-gray-200 rounded-2xl p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
+              <div>
+                <div className="flex gap-1 mb-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-sm text-[#434655] leading-relaxed italic">
+                  &quot;O link de rastreio cortou pela metade as ligações no SAC. Nossos clientes em Belo Horizonte acompanham o entregador pelo WhatsApp e param de perguntar &apos;cadê meu pedido?&apos; toda hora.&quot;
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-200">
+                <p className="font-bold text-sm text-[#0b1c30]">Ricardo Almeida</p>
+                <p className="text-xs text-[#737686]">CEO, Moda Express BH</p>
+                <p className="text-[10px] text-blue-600 font-semibold mt-1">Belo Horizonte, MG</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Final */}
       <section className="bg-blue-600 py-16 px-6 text-center text-white relative overflow-hidden max-w-[1440px] mx-auto rounded-3xl mb-12 shadow-lg">
         <div className="relative z-10 max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4">Pronto para transformar sua logística?</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4">Quer parar de perder entrega por rota mal feita?</h2>
           <p className="text-blue-100 text-base mb-8">
-            Junte-se a centenas de distribuidoras, armarinhos e lojas virtuais brasileiras que reduziram custos e melhoraram a satisfação do cliente com Logística Pro.
+            Distribuidoras, lojas online e delivery local já usam o Logística Pro para cortar custo de frete e responder rápido quando o cliente pergunta &quot;cadê meu pedido?&quot;
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
+            <button
               type="button"
               id="btn_cta_onboarding"
-              onClick={onStartFreeTrial} 
+              onClick={onStartFreeTrial}
               className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-xl font-bold text-base transition-all active:scale-95 shadow-lg"
             >
               Criar conta gratuita
             </button>
-            <button 
+            <button
               type="button"
               id="btn_cta_sandbox"
-              onClick={onEnterSandbox} 
+              onClick={onEnterSandbox}
               className="border border-white/40 text-white hover:bg-white/10 px-8 py-3 rounded-xl font-bold text-base transition-all active:scale-95"
             >
               Ver demonstração
             </button>
           </div>
         </div>
-        
+
         {/* Background Details */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2"></div>
@@ -490,7 +564,7 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
               <span className="font-extrabold text-white text-lg">Logística Pro</span>
             </div>
             <p className="text-xs text-gray-400 leading-relaxed">
-              Otimizando rotas de última milha no Brasil com tecnologia inteligente e dados em tempo real.
+              Gestão de entregas de última milha no Brasil. Rotas, rastreio e comprovante digital num só lugar.
             </p>
           </div>
           <div>

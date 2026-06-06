@@ -34,7 +34,7 @@ export default function IntegrationsView({ onAddSimulatedDelivery, addToast }: I
   const [triggeringWebhook, setTriggeringWebhook] = useState<boolean>(false);
   const [webhookLog, setWebhookLog] = useState<string[]>([
     'System: Pronto para receber requisições de webhook',
-    'VTEX integration: Sincronismo efetuado há 12 min (0 pedidos importados)'
+    'VTEX Hub: Sincronismo efetuado há 12 min (47 pedidos importados hoje)'
   ]);
 
   // Available integrations card list
@@ -92,18 +92,18 @@ export default function IntegrationsView({ onAddSimulatedDelivery, addToast }: I
 
     setTimeout(() => {
       const clients = [
-        'Armarinho Fernando SP', 
-        'Farmácia Droga Raia', 
-        'Hortifrúti da Cidade', 
-        'Dona Bento Doceria'
+        'Comercial Mendes Atacado',
+        'Loja Beleza & Estilo SP',
+        'Hortifruti Santa Cecília',
+        'Padaria do Zé — E-commerce'
       ];
       const addresses = [
-        'Av. Prestes Maia, 240', 
-        'Rua Domingos de Morais, 1200', 
-        'Rua Heitor Penteado, 450', 
-        'Al. Lorena, 1578'
+        'Av. Paulista, 726, Bela Vista, São Paulo - SP',
+        'Rua Domingos de Morais, 2564, Vila Mariana, São Paulo - SP',
+        'Rua Heitor Penteado, 450, Sumarezinho, São Paulo - SP',
+        'Alameda Lorena, 1578, Jardim Paulista, São Paulo - SP'
       ];
-      const ceps = ['01031-000', '04010-100', '05437-000', '01424-002'];
+      const ceps = ['01310-100', '04010-100', '05437-000', '01424-002'];
 
       const randomIdx = Math.floor(Math.random() * clients.length);
       const randomId = `#WEB-${Math.floor(10000 + Math.random() * 90000)}`;
@@ -149,8 +149,8 @@ export default function IntegrationsView({ onAddSimulatedDelivery, addToast }: I
             {integrationsList.map((item) => (
               <div 
                 key={item.id}
-                className={`p-6 border rounded-2xl bg-white shadow-sm flex flex-col justify-between min-h-[200px] transition-all hover:border-gray-300 relative ${
-                  item.connected ? 'border-l-4 border-l-blue-600' : 'border-gray-200'
+                className={`p-6 border rounded-2xl bg-white shadow-sm flex flex-col justify-between min-h-[200px] ui-card-lift ui-border-hover relative ${
+                  item.connected ? 'border-l-4 border-l-blue-600' : ''
                 }`}
               >
                 <div>
@@ -171,10 +171,10 @@ export default function IntegrationsView({ onAddSimulatedDelivery, addToast }: I
                   <button 
                     type="button"
                     onClick={() => handleToggleConnection(item.id)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border-none ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold ui-btn border-none ${
                       item.connected 
-                        ? 'bg-blue-50 text-blue-700 hover:bg-blue-100' 
-                        : 'bg-blue-600 text-white hover:bg-blue-700'
+                        ? 'bg-blue-50 text-blue-700 hover:bg-blue-100 hover:border-blue-200/60 border border-transparent' 
+                        : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md'
                     }`}
                   >
                     {item.connected ? 'Conectado (Desvincular)' : 'Configurar Conexão'}
@@ -185,7 +185,7 @@ export default function IntegrationsView({ onAddSimulatedDelivery, addToast }: I
           </div>
 
           {/* Secure API Key Manager - Screen layout display details */}
-          <div className="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm space-y-4">
+          <div className="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm space-y-4 ui-border-hover">
             <div className="flex items-center gap-2">
               <Lock className="h-5 w-5 text-gray-500" />
               <h3 className="text-sm font-bold text-gray-900">Autenticação Privada baseada em API Tokens</h3>
@@ -204,7 +204,7 @@ export default function IntegrationsView({ onAddSimulatedDelivery, addToast }: I
                 <button 
                   type="button" 
                   onClick={() => setShowKey(!showKey)}
-                  className="p-1.5 hover:bg-gray-200 rounded transition-colors text-gray-500"
+                  className="p-1.5 hover:bg-gray-200 rounded ui-btn text-gray-500 hover:text-gray-700"
                   title={showKey ? 'Ocultar Chave' : 'Mostrar Chave'}
                 >
                   {showKey ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -214,7 +214,7 @@ export default function IntegrationsView({ onAddSimulatedDelivery, addToast }: I
               <button 
                 type="button" 
                 onClick={handleCopyKey}
-                className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-1 transition-colors text-xs font-semibold"
+                className="px-3 py-1.5 bg-white border border-gray-200/80 rounded-lg hover:bg-gray-50 flex items-center gap-1 ui-btn text-xs font-semibold hover:border-gray-300/80"
               >
                 {copiedKey ? <Check className="h-4 w-4 text-emerald-600" /> : <Copy className="h-4 w-4 text-gray-500" />}
                 <span>{copiedKey ? 'Copiado!' : 'Copiar'}</span>
@@ -224,7 +224,7 @@ export default function IntegrationsView({ onAddSimulatedDelivery, addToast }: I
         </div>
 
         {/* Live Developer Simulator Zone sidebar panel */}
-        <div className="lg:col-span-4 bg-white border border-gray-200 rounded-3xl p-6 shadow-sm space-y-6">
+        <div className="lg:col-span-4 bg-white border border-gray-200 rounded-3xl p-6 shadow-sm space-y-6 ui-border-hover">
           <div>
             <h3 className="text-xs font-bold text-blue-600 tracking-widest uppercase">CONVÉS DE WEBHOOK</h3>
             <p className="text-xs text-gray-400 mt-1">Simulador de triggers de faturamento para PMEs</p>
@@ -246,10 +246,10 @@ export default function IntegrationsView({ onAddSimulatedDelivery, addToast }: I
               type="button"
               disabled={triggeringWebhook}
               onClick={handleTriggerSimulatedWebhook}
-              className={`w-full py-2.5 rounded-xl font-bold text-xs text-white flex items-center justify-center gap-2 border-none transition-all ${
+              className={`w-full py-2.5 rounded-xl font-bold text-xs text-white flex items-center justify-center gap-2 border-none ui-btn ${
                 triggeringWebhook 
                   ? 'bg-blue-400 cursor-not-allowed' 
-                  : 'bg-blue-600 hover:bg-blue-700 shadow-md active:scale-95'
+                  : 'bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg hover:-translate-y-0.5'
               }`}
             >
               {triggeringWebhook ? (
