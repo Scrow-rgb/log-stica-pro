@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
+import RouteMapIllustration from './RouteMapIllustration';
 import { motion } from 'motion/react';
 import { 
   ArrowRight, 
@@ -180,6 +181,12 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
               <div className="flex gap-2">
                 <span className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold">Até -30% Km</span>
                 <span className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold">Economia de Combustível</span>
+              </div>
+            </div>
+
+            <div className="absolute right-0 bottom-0 w-[52%] h-full hidden sm:block pointer-events-none">
+              <div className="h-full rounded-tl-[3rem] border-l border-t border-gray-100 overflow-hidden bg-gradient-to-br from-blue-50 to-emerald-50 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                <RouteMapIllustration />
               </div>
             </div>
           </div>
