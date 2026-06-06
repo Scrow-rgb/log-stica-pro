@@ -103,7 +103,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#f8f9ff] min-h-screen text-[#0b1c30] select-none h-screen flex flex-col relative overflow-hidden">
+    <div className="bg-[#f8f9ff] min-h-screen text-[#0b1c30] h-screen flex flex-col relative overflow-hidden">
       
       {/* Dynamic Toast Feedback Overlay Panel */}
       <div className="fixed top-4 right-4 z-50 flex flex-col gap-2 max-w-sm pointer-events-none">
