@@ -182,16 +182,6 @@ export default function LandingPage({ onStartFreeTrial, onEnterSandbox }: Landin
                 <span className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold">Economia de Combustível</span>
               </div>
             </div>
-            
-            {/* Visual Route Mock */}
-            <div className="absolute right-0 bottom-0 w-1/2 h-full opacity-35 group-hover:opacity-60 transition-opacity duration-300 hidden sm:block">
-              <img 
-                className="w-full h-full object-cover rounded-tl-[3rem] border-l border-t border-gray-100" 
-                alt="City Route Map Grid" 
-                referrerPolicy="no-referrer"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-n6-znq9xBjWAhLRYFwXAODbOczX93drBHhBQ-nftUjH8aGINbr_lnpIZH8UE31dk6NZw9UC1vKA-e8EWQJ8631wKZU1hAtQoHVWIJpmsO-iaD3wBtZST246eNvcZ0keEQbTbT9rGEdRv8vSkmhOxLR-pZfeWhw2DlfvKLkD-PHcPxVF7DW7QhyFOk2fhQmG4-_9mVDvy1TeUhw0GVMBudf5_5-EWPiOux3nRzX0Rh7AqSpwVXzc4A4lNBbiKu6Hd23B2MpUXctg" 
-              />
-            </div>
           </div>
 
           {/* Card 2: Track & Trace */}
